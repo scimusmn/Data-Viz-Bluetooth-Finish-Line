@@ -16,9 +16,7 @@ If it is necessary to reprogram the microcontroller, use the Arduino IDE, and in
 
 https://learn.adafruit.com/bluefruit-nrf52-feather-learning-guide/arduino-bsp-setup
 
-Prior to installing the library, it may be neccesary to temporarily disable antivirus software when using Windows.
-
-Lastly, make sure to select the correct board before uploading the code.
+Prior to installing the library, it may be neccesary to temporarily disable antivirus software when using Windows.  Lastly, make sure to select the correct board before uploading the code.
 
 
 
