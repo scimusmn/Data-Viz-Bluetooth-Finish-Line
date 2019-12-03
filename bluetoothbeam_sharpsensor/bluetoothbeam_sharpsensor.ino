@@ -2,7 +2,7 @@
 
 int adcin = A0; //analog input A0
 int adcValue = 0;
-int triggerThreshold = 150; //this sets the minimun trigger distance
+int triggerThreshold = 150; //this sets the minimum trigger distance
 int releaseThreshold = 100; //threshold value for allowing a new trigger
 int debounce = 300; //this sets delay between subsequent triggers
 bool triggered = false;
@@ -12,7 +12,6 @@ BLEHidAdafruit blehid;
 
 void setup()
 {
-  //Serial.begin(115200);
   pinMode(17, OUTPUT); // Onboard LED
   Bluefruit.begin();
   // Set max power. Accepted values are: -40, -30, -20, -16, -12, -8, -4, 0, 4
@@ -77,7 +76,7 @@ void loop()
   adcValue = analogRead(adcin); //get analog value from distance sensor
   if ((adcValue > triggerThreshold) && (!triggered)) {
     triggered = true;
-    digitalWrite(17, HIGH);
+    digitalWrite(17, HIGH); //turn on "sense" indicator LED
     blehid.keyPress('a');
     blehid.keyRelease();
     blehid.keyRelease(); //this is run twice to ensure key has been released
@@ -86,6 +85,5 @@ void loop()
   }
   if ((adcValue  < releaseThreshold) && (triggered))  { //provides hysterisis to prevent 'a' key from repeating
     triggered = false;
-    //blehid.keyRelease();
   }
 }
