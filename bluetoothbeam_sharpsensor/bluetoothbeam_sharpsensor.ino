@@ -1,9 +1,9 @@
 #include <bluefruit.h>
 
-int adcin = A0;
+int adcin = A0; //analog input A0
 int adcValue = 0;
-int triggerThreshold = 150;
-int releaseThreshold = 100;
+int triggerThreshold = 150; //this sets the minimun trigger distance
+int releaseThreshold = 100; //threshold value for allowing a new trigger
 int debounce = 300; //this sets delay between subsequent triggers
 bool triggered = false;
 
@@ -74,14 +74,13 @@ void startAdv(void)
 
 void loop()
 {
-
-  adcValue = analogRead(adcin);
+  adcValue = analogRead(adcin); //get analog value from distance sensor
   if ((adcValue > triggerThreshold) && (!triggered)) {
     triggered = true;
     digitalWrite(17, HIGH);
     blehid.keyPress('a');
     blehid.keyRelease();
-    blehid.keyRelease(); //this is run twice to ensure key has being pressed
+    blehid.keyRelease(); //this is run twice to ensure key has been released
     digitalWrite(17, LOW);
     delay(debounce);
   }
